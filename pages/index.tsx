@@ -1,5 +1,5 @@
 import { Roboto } from 'next/font/google'
-import NavBar from '@/components/general/NavBar'
+import NavBar from '@/components/nav/NavBar'
 
 const roboto = Roboto({
 	weight: ['400', '700'],
@@ -12,7 +12,7 @@ export default function Home() {
 		<main className={roboto.className + ' h-[1000px]'}>
 			<NavBar />
 		
-			<div className='w-full h-full flex justify-end items-end pt-10 bg-slate-300'>
+			<div className='w-full h-full flex justify-end items-end pt-10 bg-neutral-100'>
 				Hello world
 			</div>
 		</main>
