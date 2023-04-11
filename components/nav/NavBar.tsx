@@ -5,7 +5,7 @@ import GameNavButton from './GameNavButton';
 
 function NavBar() {
     const [menu, setMenu] = useState(false);
-    const games = [{title: 'Wordle', color: '#0d679c'}, {title: 'Spelling bee', color: '#003200'}, {title: 'Sequence memory', color: '#000000'}]
+    const games = [{id: 'wordle', title: 'Wordle', color: '#6aaa64', status: 'New'}, {id: 'spellingBee', title: 'Spelling bee', color: '#f8cd0e', status: 'Coming soon'}]
 
     return (
         <nav className="fixed bg-neutral-50 border-b text-neutral-800 border-neutral-400 flex justify-between items-center w-full p-3">
@@ -41,7 +41,7 @@ function NavBar() {
                     <div className='flex flex-col'>
                         <h1 className='font-mono font-extrabold text-neutral-500 mx-3'>Select game</h1>
                         {games.map((game) => (
-                            <GameNavButton key={game.title} game={game} />
+                            <GameNavButton key={game.id} game={game} />
                         ))}
                     </div>
 

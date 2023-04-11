@@ -9,10 +9,10 @@ const roboto = Roboto({
 
 export default function Home() {
 	return (
-		<main className={roboto.className + ' h-[1000px]'}>
+		<main className={roboto.className}>
 			<NavBar />
 		
-			<div className='w-full h-full flex justify-end items-end pt-10 bg-neutral-100'>
+			<div className='w-full h-full flex pt-14 bg-neutral-100'>
 				Hello world
 			</div>
 		</main>
