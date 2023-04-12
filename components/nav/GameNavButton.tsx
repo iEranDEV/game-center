@@ -10,17 +10,7 @@ const textMotion = {
     }
 }
 
-const statusMotion = {
-    hover: {
-        y: [-2, 0, 2, 0, -2],
-        transition: {
-            repeat: Infinity,
-            duration: 1
-        }
-    }
-}
-
-function GameNavButton({ game }: { game: {id: string, title: string, color: string, status?: string} }) {
+function GameNavButton({ game }: { game: GameType }) {
 
     return (
         <motion.div whileHover="hover" style={{borderColor: game.color}} className='px-2 hover:border-l-[6px] border-neutral-50 py-1.5 hover:bg-neutral-100 cursor-pointer flex justify-between items-center'>
@@ -32,9 +22,9 @@ function GameNavButton({ game }: { game: {id: string, title: string, color: stri
             </div>
 
             {game.status && 
-                <motion.div variants={statusMotion} className={'text-xs rounded-full px-2 py-0.5 text-neutral-50 ' + (game.status === 'New' ? 'bg-lime-600' : 'bg-amber-500')}>
+                <div className={'text-xs rounded-full px-2 py-0.5 text-neutral-50 ' + (game.status === 'New' ? 'bg-lime-600' : 'bg-amber-500')}>
                     {game.status}
-                </motion.div>
+                </div>
             }
         </motion.div>
     )

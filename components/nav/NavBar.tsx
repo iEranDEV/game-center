@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { BiMenu, BiX } from 'react-icons/bi'
 import { motion } from "framer-motion"
 import GameNavButton from './GameNavButton';
+import games from '@/games.json'
 
 function NavBar() {
     const [menu, setMenu] = useState(false);
-    const games = [{id: 'wordle', title: 'Wordle', color: '#6aaa64', status: 'New'}, {id: 'spellingBee', title: 'Spelling bee', color: '#f8cd0e', status: 'Coming soon'}]
 
     return (
         <nav className="fixed bg-neutral-50 border-b text-neutral-800 border-neutral-400 flex justify-between items-center w-full p-3">
