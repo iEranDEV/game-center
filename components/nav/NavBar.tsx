@@ -16,7 +16,7 @@ function NavBar() {
             <div className='flex justify-end gap-4 items-center'>
 
                 {/* Log in button */}
-                <button className='uppercase text-sm py-1 px-5 border border-neutral-900 font-mono font-extrabold rounded hover:bg-neutral-900 hover:text-neutral-50 transition-all'>
+                <button className='uppercase text-sm py-1 px-5 border border-neutral-900 font-bebas tracking-widest rounded hover:bg-neutral-900 hover:text-neutral-50 transition-all'>
                     Log in
                 </button>
             </div>
@@ -39,7 +39,7 @@ function NavBar() {
                 {/* Pages / Games */}
                 <div className='flex h-full flex-col justify-between'>
                     <div className='flex flex-col'>
-                        <h1 className='font-mono font-extrabold text-neutral-500 mx-3'>Select game</h1>
+                        <h1 className='font-bebas text-neutral-500 mx-3'>Select game</h1>
                         {games.map((game) => (
                             <GameNavButton key={game.id} game={game} />
                         ))}

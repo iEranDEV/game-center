@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Image from 'next/image'
+import Link from "next/link";
 
 export default function GameCard({ game }: { game: GameType}) {
 
@@ -11,9 +12,11 @@ export default function GameCard({ game }: { game: GameType}) {
             </div>
 
             <div className="w-full flex flex-col justify-between h-36 items-center p-2">
-                <h1 className="text-xl text-neutral-700 font-bold uppercase font-mono">{game.title}</h1>
+                <h1 className="text-2xl text-neutral-700  uppercase font-bebas">{game.title}</h1>
                 <span className="text-neutral-400 text-sm">{game.description}</span>
-                <button className="w-2/3 rounded-lg py-1 border border-neutral-300 hover:bg-neutral-900 hover:text-neutral-50 transition-all uppercase  font-mono text-neutral-700 font-extrabold">play</button>
+                <Link href={'/games/' + game.id} className="w-2/3 rounded-lg py-1 flex justify-center items-center border border-neutral-300 hover:bg-neutral-900 hover:text-neutral-50 transition-all uppercase text-lg font-bebas text-neutral-700">
+                    play
+                </Link>
             </div>
         </motion.div>
     )
