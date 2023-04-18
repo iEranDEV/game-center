@@ -16,6 +16,8 @@ export default function Wordle() {
             // User input backspace
             if(userInput.length > 0) {
                 setUserInput((prev) => prev.slice(0, -1));
+            } else {
+                animate(scope.current, { x: [0, -10, 0, 10, 0]}, { duration: 0.2 })
             }
 
         } else if(key === 'ENTER') {
