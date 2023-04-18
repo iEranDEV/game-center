@@ -1,3 +1,4 @@
+import EndGameModal from "@/components/games/wordle/EndGameModal";
 import WordleBoardTile from "@/components/games/wordle/WordleBoardTile";
 import WordleKeyboard from "@/components/games/wordle/WordleKeyboard";
 import { WordleContext } from "@/context/WordleContext";
@@ -10,6 +11,7 @@ export default function Wordle() {
     const [word, setWord] = useState<string | null>(null);
     const [userInput, setUserInput] = useState('');
     const [guesses, setGuesses] = useState(Array<string>());
+    const [status, setStatus] = useState('playing');
 
     const [scope, animate] = useAnimate();
 
@@ -21,6 +23,7 @@ export default function Wordle() {
             if(response.ok) {
                 const data = await response.json();
                 setWord(data[0].toUpperCase());
+                console.log(data[0].toUpperCase());
             } else {
                 router.push('/');
             }
@@ -30,6 +33,8 @@ export default function Wordle() {
     }, [])
 
     const handleUserInput = async (key: string) => {
+        if(status !== 'playing') return;
+
         if(key === 'DELETE') {
             // User input backspace
             if(userInput.length > 0) {
@@ -41,12 +46,21 @@ export default function Wordle() {
         } else if(key === 'ENTER') {
             // User input enter
             if(userInput.length === 5) {
-                const response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + userInput.toLowerCase());
-                if(response.ok) {
+                if(userInput === word) {
+                    setStatus('win');
                     setGuesses([...guesses, userInput]);
                     setUserInput('');
                 } else {
-                    animate(scope.current, { x: [0, -10, 0, 10, 0]}, { duration: 0.2 });
+                    const response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + userInput.toLowerCase());
+                    if(response.ok) {
+                        setGuesses([...guesses, userInput]);
+                        if(guesses.length === 5) {
+                            setStatus('lost');
+                        }
+                        setUserInput('');
+                    } else {
+                        animate(scope.current, { x: [0, -10, 0, 10, 0]}, { duration: 0.2 });
+                    }
                 }
             } else {
                 animate(scope.current, { x: [0, -10, 0, 10, 0]}, { duration: 0.2 });
@@ -96,6 +110,8 @@ export default function Wordle() {
                 </div>
 
                 <WordleKeyboard />
+
+                {status !== 'playing' && <EndGameModal status={status}></EndGameModal>}
 
             </div> : <>
                 <div className="w-full h-full flex justify-center items-center">
