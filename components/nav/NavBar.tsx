@@ -12,15 +12,6 @@ function NavBar() {
             {/* Menu button */}
             <BiMenu onClick={() => setMenu(!menu)} className='h-7 w-7 cursor-pointer'></BiMenu>
 
-            {/* Login, profile */}
-            <div className='flex justify-end gap-4 items-center'>
-
-                {/* Log in button */}
-                <button className='uppercase text-sm py-1 px-5 border border-neutral-900 font-bebas tracking-widest rounded hover:bg-neutral-900 hover:text-neutral-50 transition-all'>
-                    Log in
-                </button>
-            </div>
-
             {menu && <>
                 {/* Blur */}
                 <div onClick={() => setMenu(false)} className={'absolute z-50 w-screen h-screen left-0 top-0 bg-neutral-300/30 backdrop-blur-[0.5px]'}></div>

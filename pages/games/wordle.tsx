@@ -1,3 +1,4 @@
+import WordleKeyboard from "@/components/games/wordle/WordleKeyboard";
 import { motion } from "framer-motion";
 
 export default function Wordle() {
@@ -5,11 +6,11 @@ export default function Wordle() {
     const word = 'wordle';
 
     return (
-        <div className='w-full h-screen overflow-hidden flex flex-col pt-14 p-3 bg-neutral-50 items-center'>
+        <div className='w-full h-full justify-between flex flex-col items-center'>
             
-            <h1 className="py-5 font-bebas text-4xl">WORDLE</h1>
+            <h1 className="pt-2 font-bebas text-4xl">WORDLE</h1>
 
-            <div className="flex flex-col gap-2">
+            <div className="h-4/6 flex flex-col gap-2">
                 {Array.from({length: 6}, (_, i) => (
                     <div className="flex gap-2" key={i}>
                         {Array.from({length: 5}, (_, j) => (
@@ -24,6 +25,8 @@ export default function Wordle() {
                     </div>
                 ))}
             </div>
+
+            <WordleKeyboard />
 
         </div>
     )

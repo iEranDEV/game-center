@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
 	return (
-		<div className='w-full h-screen overflow-hidden flex flex-col pt-14 p-3 bg-neutral-50 items-center'>
+		<div className='flex flex-col items-center'>
 			
 			{/* Hero section */}
 
