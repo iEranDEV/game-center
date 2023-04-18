@@ -20,6 +20,9 @@ function NavBar() {
             {/* Menu button */}
             <BiMenu onClick={() => setMenu(!menu)} className='h-7 w-7 cursor-pointer'></BiMenu>
 
+            {/* Logo */}
+            <h1 className="font-bebas text-2xl absolute left-1/2 -translate-x-1/2">GAME CENTER</h1>
+
             {menu && <>
                 {/* Blur */}
                 <div onClick={() => setMenu(false)} className={'absolute z-50 w-screen h-screen left-0 top-0 bg-neutral-300/30 backdrop-blur-[0.5px]'}></div>

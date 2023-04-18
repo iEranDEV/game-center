@@ -17,14 +17,17 @@ function WordleBoardTile({ row, col }: WordleBoardTileProps) {
     useEffect(() => {
         // animate(scope.current, { backgroundColor: 'red' })
         if(row + 1 === currentRow) {
+
             const letter = wordleContext.guesses[row][col];
             if(wordleContext.word[col] === letter) {
                 // Same index
-                animate(scope.current, { y: [0, -3, 0], backgroundColor: '#34d399', color: '#fafafa', borderWidth: 0 }, { duration: 0.2});
+                animate(scope.current, { rotateY: 360, backgroundColor: '#34d399', color: '#fafafa', borderWidth: 0 }, { duration: 0.2, delay: col * 0.1});
             } else if(wordleContext.word.includes(letter)) {
                 // Just includes
-                animate(scope.current, { y: [0, -3, 0], backgroundColor: '#fdba74', color: '#fafafa', borderWidth: 0 }, { duration: 0.2});
-            }
+                animate(scope.current, { rotateY: 360, backgroundColor: '#fdba74', color: '#fafafa', borderWidth: 0 }, { duration: 0.2, delay: col * 0.1});
+            } else {
+                animate(scope.current, { rotateY: 360 }, { duration: 0.2, delay: col * 0.1});
+            } 
         }
     }, [wordleContext.guesses]);
 

@@ -5,7 +5,7 @@
         "description": "test desc for wordle",
         "color": "#6aaa64",
         "secondaryColor": "#89c484",
-        "status": "New"
+        "status": ""
     }, {
         "id": "spellingBee",
         "title": "Spelling Bee",

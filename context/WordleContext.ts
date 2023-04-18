@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 export const WordleContext = createContext({
-    word: '',
+    word: null as any,
     userInput: '',
     setUserInput: (userInput: string) => {},
     guesses: Array<string>(),
