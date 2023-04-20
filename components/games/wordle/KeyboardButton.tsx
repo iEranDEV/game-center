@@ -22,10 +22,16 @@ function KeyboardButton({ letter, icon }: KeyboardButtonProps) {
                     }
                 }
                 if(guess.includes(letter) && val === 'none') {
-                        val = 'includes';
+                    val = 'includes';
                 }
             })
 
+            setValue(val);
+        } else {
+            let val = 'none';
+            wordleContext.guesses.forEach((guess) => {
+                if(guess.includes(letter)) val = 'noIncludes';
+            });
             setValue(val);
         }
 
@@ -34,16 +40,18 @@ function KeyboardButton({ letter, icon }: KeyboardButtonProps) {
     const getBgColor = () => {
         switch(value) {
             case 'none':
-                return 'bg-neutral-200 text-neutral-600 ';
+                return 'bg-neutral-200 text-neutral-500 ';
             case 'includes':
                 return 'bg-orange-300 text-neutral-50';
             case 'onIndex':
                 return 'bg-emerald-400 text-neutral-50';
+            case 'noIncludes':
+                return 'bg-neutral-400 text-neutral-50 ';
         }
     }
 
     return (
-        <div className={(icon ? 'w-12 md:w-16 ' : 'w-8 md:w-10 ') + getBgColor() + ' h-12 flex justify-center items-center md:text-lg rounded-lg hover:brightness-[0.85] cursor-pointer'}
+        <div className={(icon ? 'w-16 md:w-16 ' : 'w-8 md:w-10 ') + getBgColor() + ' h-12 flex justify-center items-center md:text-lg rounded-lg hover:brightness-[0.85] cursor-pointer'}
             onClick={() => wordleContext.handleUserInput(letter)}
         >
             {icon ? icon : letter}

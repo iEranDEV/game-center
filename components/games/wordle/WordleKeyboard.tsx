@@ -14,11 +14,11 @@ function WordleKeyboard() {
     }
 
     return (
-        <div className="w-full md:w-96 lg:w-[30rem] xl:w-[35rem] h-2/6 flex flex-col gap-2">
+        <div className="w-full md:w-96 lg:w-[30rem] xl:w-[35rem] h-2/6 flex flex-col gap-1">
 
             {/* Rows */}
             {symbols.map((row, index) => (
-                <div key={index} className="w-full flex justify-center items-center gap-2">
+                <div key={index} className="w-full flex justify-center items-center gap-1">
                     {row.map((item) => (
                         <KeyboardButton key={item} letter={item} icon={getIcon(item)} />
                     ))}
