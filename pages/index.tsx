@@ -15,7 +15,7 @@ export default function Home() {
 				))}
 
 				{/* Blank space */}
-				<motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 bg-neutral-100 border-neutral-200 rounded-lg'>
+				<motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 bg-neutral-100 dark:bg-slate-600/50 border-neutral-200 dark:border-slate-800 rounded-lg'>
 				</motion.div>
 			</div>
 

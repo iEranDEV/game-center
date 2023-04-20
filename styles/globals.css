@@ -9,5 +9,17 @@
 }
 
 body {
-    @apply bg-neutral-50;
+    @apply bg-neutral-50 dark:bg-slate-700;
+}
+
+.bg-primary {
+    @apply bg-neutral-50 dark:bg-slate-700;
+}
+
+.text-primary {
+    @apply font-bebas text-neutral-700 dark:text-neutral-200 uppercase;
+}
+
+.text-secondary {
+    @apply text-neutral-400 dark:text-neutral-300 text-sm;
 }

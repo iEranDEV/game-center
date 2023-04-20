@@ -10,10 +10,10 @@ const roboto = Roboto({
 function Layout({ children }: {children: JSX.Element}) {
 
     return (
-        <main className={roboto.className}>
+        <main className={roboto.className + ' relative'}>
 			<NavBar />
 		
-			<div className='w-full h-screen pt-14 p-3 bg-neutral-50 overflow-hidden'>
+			<div className='w-full z-10 h-screen pt-14 p-3 overflow-hidden'>
 				{children}
 			</div>
 		</main>

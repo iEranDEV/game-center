@@ -115,7 +115,7 @@ export default function Wordle() {
 
             </div> : <>
                 <div className="w-full h-full flex justify-center items-center">
-                    <AiOutlineLoading className="h-8 w-8 animate-spin text-neutral-300"></AiOutlineLoading>
+                    <AiOutlineLoading className="h-8 w-8 animate-spin text-primary"></AiOutlineLoading>
                 </div>
             </>}
         </WordleContext.Provider>
