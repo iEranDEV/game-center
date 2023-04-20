@@ -5,6 +5,7 @@ import GameNavButton from './GameNavButton';
 import games from '@/games.json'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import DarkModeToggler from './DarkModeToggler';
 
 function NavBar() {
     const [menu, setMenu] = useState(false);
@@ -29,7 +30,7 @@ function NavBar() {
             <h1 className="font-bebas text-2xl absolute left-1/2 -translate-x-1/2">GAME CENTER</h1>
 
             {/* Dark mode toggle */}
-            <div onClick={toggleDarkMode}>change</div>
+            <DarkModeToggler></DarkModeToggler>
 
             {menu && <>
                 {/* Blur */}
