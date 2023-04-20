@@ -7,6 +7,13 @@
         "secondaryColor": "#89c484",
         "status": ""
     }, {
+        "id": "visualMemory",
+        "title": "Visual memory",
+        "description": "test desc for visual memory",
+        "color": "#3b82f6",
+        "secondaryColor": "#0ea5e9",
+        "status": "New"
+    }, {
         "id": "spellingBee",
         "title": "Spelling Bee",
         "description": "test desc for spelling bee",
