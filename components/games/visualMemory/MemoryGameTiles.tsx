@@ -15,8 +15,6 @@ export default function MemoryGameTile({ pos, board, status, setStatus, userInpu
     const [selected, setSelected] = useState(false);
 
     useEffect(() => {
-        
-        setStatus(() => 'preparingBoard');
         setSelected(false);
 
         let contains = false;
@@ -27,8 +25,9 @@ export default function MemoryGameTile({ pos, board, status, setStatus, userInpu
         if(contains) animate(scope.current, { rotateY: [0, 180, 180], backgroundColor: ['#3b82f6']}, { ease: 'linear' });
 
         setTimeout(() => {
-            if(contains) animate(scope.current, { rotateY: [0, -180, -180], backgroundColor: ['']}, { ease: 'linear' });
-            setStatus(() => 'playing');
+            if(contains) {
+                animate(scope.current, { rotateY: [0, -180, -180], backgroundColor: ['']}, { ease: 'linear', onComplete: setStatus(() => 'playing') });
+            } 
         }, 1000);
     }, [board])
 

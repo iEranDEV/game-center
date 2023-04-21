@@ -2,7 +2,6 @@ import EndGameModal from "@/components/games/visualMemory/EndGameModal";
 import MemoryGameTile from "@/components/games/visualMemory/MemoryGameTiles";
 import { motion, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
-import { HiOutlineEmojiHappy } from "react-icons/hi";
 
 export default function VisualMemory() {
 
@@ -22,6 +21,8 @@ export default function VisualMemory() {
                 col: Math.floor(Math.random() * tilesCount)
             }
         }
+
+        setStatus(() => 'preparingBoard');
 
         const tempBoard = Array<{row: number, col: number}>();
         while(tempBoard.length < (level + 2)) {
