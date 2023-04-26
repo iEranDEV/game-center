@@ -1,21 +1,23 @@
+import EndGameModal from "@/components/games/speedTyping/EndGameModal";
 import { motion } from "framer-motion";
 import randomWords from "random-words";
 import { Fragment, useEffect, useRef, useState } from "react"
 
 export default function SpeedTyping() {
     const [status, setStatus] = useState('none');
-    const [time, setTime] = useState(30);
-    const [text, setText] = useState(Array<string>());
+    const [time, setTime] = useState(60);
+    const [words, setWords] = useState(Array<string>());
     const [userInput, setUserInput] = useState({
         currentWord: 0,
-        input: ''
+        input: '',
+        history: Array<string>()
     });
     const [row, setRow] = useState(0);
 
     const inputRef = useRef(null);
 
     useEffect(() => {
-        setText(randomWords(50));
+        setWords(randomWords(50));
         (inputRef.current as any).focus();
     }, []);
 
@@ -53,8 +55,7 @@ export default function SpeedTyping() {
             if(nextTop && currentTop && nextTop > currentTop) {
                 setRow((prev) => prev + 1);
             }
-
-            setUserInput({currentWord: userInput.currentWord + 1, input: ''});
+            setUserInput({currentWord: userInput.currentWord + 1, input: '', history: [...userInput.history, userInput.input.trim()]});
         }
     }
 
@@ -62,38 +63,43 @@ export default function SpeedTyping() {
         <div className='w-full h-full justify-center flex flex-col items-center pt-10 gap-10'>
 
             <div className="w-full md:w-[35rem] flex flex-col gap-2">
-                <h1 className="text-primary text-2xl">TIME LEFT: {time} seconds</h1>
-                {status === 'playing' && 
-                    <motion.div className="bg-green-500 h-0.5" initial={{width: '100%'}} animate={{width: '0'}} transition={{duration: 30, type: 'tween', ease: 'linear'}}>
-
+                <h1 className="text-primary text-2xl">TIME LEFT: <span className="text-green-500">{time}</span> seconds</h1>
+                {status === 'playing' ?
+                    <motion.div className="bg-green-500 h-1 rounded-lg" initial={{width: '100%'}} animate={{width: '0'}} transition={{duration: 60, type: 'tween', ease: 'linear'}}>
                     </motion.div>
+                :
+                    <div className="h-1 w-full bg-primary">
+                    </div>
                 }
             </div>
 
             {/* Game board */}
-            <div>
-                <div className="w-full md:w-[35rem] h-[199px] border relative rounded-t-lg overflow-hidden">
-                    <div className="absolute left-0 p-2 flex flex-wrap gap-x-1 gap-y-2" style={{top: -(row * 43) + 'px'}}>
-                        {text.map((word, index) => (
+            <div className="w-full flex justify-center flex-col items-center">
+                <div className="w-full md:w-[35rem] h-[199px] border dark:border-slate-600 relative rounded-t-lg overflow-hidden">
+                    <motion.div className="absolute w-full left-0 p-2 flex flex-wrap gap-x-1 gap-y-2" initial={{top: 0}} animate={{ top: -(row * 43) + 'px'}}>
+                        {words.map((word, index) => (
                             <Fragment key={index}>
                                 {index < userInput.currentWord ? 
-                                    <p id={'word_' + index} className={'bg-red-200 text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
+                                    <motion.p id={'word_' + index} initial={{opacity: 0.5}} animate={{opacity: 1}} className={(userInput.history[index] === word ? 'bg-green-200' : 'bg-red-200') + ' text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
                                         {word}
-                                    </p>
+                                    </motion.p>
                                 :
-                                    <p id={'word_' + index} className={(userInput.currentWord === index && ' bg-neutral-200') + ' text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
+                                    <p id={'word_' + index} className={(userInput.currentWord === index && ' bg-neutral-200 dark:text-current') + ' dark:text-neutral-300 text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
                                         {word}
                                     </p>
                                 }
                             </Fragment>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
-                <div className="bg-neutral-200 rounded-b-lg p-2">
-                    <input onKeyDown={(e) => submitWord(e)} ref={inputRef} value={userInput.input} onChange={(e) => handleInputChange(e)} type="text" className="bg-neutral-200 w-full focus:outline-none" placeholder="Type here" onBlur={(e) => e.target.focus()} />
+                <div className="bg-neutral-200 dark:bg-slate-500 w-full md:w-[35rem] rounded-b-lg p-2 border border-neutral-400">
+                    <input onKeyDown={(e) => submitWord(e)} ref={inputRef} value={userInput.input} onChange={(e) => handleInputChange(e)} type="text" className="bg-neutral-200 dark:bg-slate-500 dark:text-neutral-200 w-full focus:outline-none" placeholder="Type here" onBlur={(e) => e.target.focus()} />
                 </div>
-                <p className="mt-2 text-neutral-300">Click SPACE to submit a word!</p>
+                <p className="mt-2 text-neutral-300 dark:text-slate-500">Click SPACE to submit a word!</p>
             </div>
+
+            {/* End game modal */}
+            {status === 'end' && <EndGameModal words={words} userInput={userInput} />}
 
         </div>
     )
