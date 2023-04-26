@@ -27,7 +27,9 @@ function NavBar() {
             <BiMenu onClick={() => setMenu(!menu)} className='h-7 w-7 cursor-pointer'></BiMenu>
 
             {/* Logo */}
-            <h1 className="font-bebas text-2xl absolute left-1/2 -translate-x-1/2">GAME CENTER</h1>
+            <Link href={'/'} className='h-full flex justify-center items-center'>
+                <h1 className="font-bebas text-2xl absolute left-1/2 -translate-x-1/2">GAME CENTER</h1>
+            </Link>
 
             {/* Dark mode toggle */}
             <DarkModeToggler></DarkModeToggler>

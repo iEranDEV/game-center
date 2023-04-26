@@ -14,9 +14,16 @@
         "secondaryColor": "#0ea5e9",
         "status": "New"
     }, {
-        "id": "spellingBee",
-        "title": "Spelling Bee",
-        "description": "test desc for spelling bee",
+        "id": "2048",
+        "title": "2048",
+        "description": "test desc for 2048",
+        "color": "#f8cd0e",
+        "secondaryColor": "#ffe15e",
+        "status": "Coming soon"
+    }, {
+        "id": "speedTyping",
+        "title": "Speed typing",
+        "description": "test desc for speed typing",
         "color": "#f8cd0e",
         "secondaryColor": "#ffe15e",
         "status": "Coming soon"
