@@ -8,7 +8,7 @@ export default function GameCard({ game }: { game: GameType}) {
     return (
         <motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 dark:bg-slate-700 border-neutral-200 dark:border-slate-800 rounded-lg'>
             <div className='w-full h-32 border-b-4 flex justify-center items-center' style={{backgroundColor: game.secondaryColor, borderColor: game.color}}>
-                <Image src={'/game_icons/' + game.id + '.svg'} alt={game.title} height={80} width={80} />
+                <Image src={'/game_icons/' + game.id + '.svg'} alt={game.title} height={60} width={60} />
             </div>
 
             <div className="w-full flex flex-col justify-between h-36 items-center p-2">
