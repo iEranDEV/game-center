@@ -2,21 +2,21 @@
     {
         "id": "wordle",
         "title": "Wordle",
-        "description": "test desc for wordle",
+        "description": "Guess hidden 5-letter word in 6 chances",
         "color": "#6aaa64",
         "secondaryColor": "#89c484",
         "status": ""
     }, {
         "id": "visualMemory",
         "title": "Visual memory",
-        "description": "test desc for visual memory",
+        "description": "Remember the pattern and try to imitate it",
         "color": "#3b82f6",
         "secondaryColor": "#0ea5e9",
         "status": ""
     }, {
         "id": "speedTyping",
         "title": "Speed typing",
-        "description": "test desc for speed typing",
+        "description": "Let's test your typing speed",
         "color": "#f43f5e",
         "secondaryColor": "#fb7185",
         "status": ""
