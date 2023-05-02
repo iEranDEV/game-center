@@ -40,22 +40,25 @@ export default function SpeedTyping() {
             setStatus('playing');
             setUserInput({...userInput, input: e.target.value});
         } else if(status === 'playing') {
-            setUserInput({...userInput, input: e.target.value});
-        }
-    }
+            let key = e.target.value.slice(-1);
+            console.log(key);
 
-    const submitWord = (e: React.KeyboardEvent) => {
-        if(e.code === 'Space') {
-            const wordElement = document.getElementById('word_' + (userInput.currentWord + 1));
-            const currentWord = document.getElementById('word_' + (userInput.currentWord));
-
-            const nextTop = wordElement?.getBoundingClientRect().top;
-            const currentTop = currentWord?.getBoundingClientRect().top;
-
-            if(nextTop && currentTop && nextTop > currentTop) {
-                setRow((prev) => prev + 1);
+            if(key === ' ') {
+                const wordElement = document.getElementById('word_' + (userInput.currentWord + 1));
+                const currentWord = document.getElementById('word_' + (userInput.currentWord));
+    
+                const nextTop = wordElement?.getBoundingClientRect().top;
+                const currentTop = currentWord?.getBoundingClientRect().top;
+    
+                if(nextTop && currentTop && nextTop > currentTop) {
+                    setRow((prev) => prev + 1);
+                }
+                setUserInput({currentWord: userInput.currentWord + 1, input: '', history: [...userInput.history, userInput.input.trim()]});
+    
+                if(userInput.currentWord > (words.length / 2)) setWords([...words, ...randomWords(50)]);
+            } else {
+                setUserInput({...userInput, input: e.target.value});
             }
-            setUserInput({currentWord: userInput.currentWord + 1, input: '', history: [...userInput.history, userInput.input.trim()]});
         }
     }
 
@@ -80,11 +83,11 @@ export default function SpeedTyping() {
                         {words.map((word, index) => (
                             <Fragment key={index}>
                                 {index < userInput.currentWord ? 
-                                    <motion.p id={'word_' + index} initial={{opacity: 0.5}} animate={{opacity: 1}} className={(userInput.history[index] === word ? 'bg-green-200' : 'bg-red-200') + ' text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
+                                    <motion.p id={'word_' + index} initial={{opacity: 0.5}} animate={{opacity: 1}} className={(userInput.history[index].toLowerCase() === word.toLowerCase() ? 'bg-green-300' : 'bg-red-300') + ' dark:text-neutral-700 text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
                                         {word}
                                     </motion.p>
                                 :
-                                    <p id={'word_' + index} className={(userInput.currentWord === index && ' bg-neutral-200 dark:text-current') + ' dark:text-neutral-300 text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
+                                    <p id={'word_' + index} className={(userInput.currentWord === index && ' bg-neutral-200 dark:bg-slate-200 dark:text-neutral-700') + ' dark:text-neutral-300 text-sm md:text-xl rounded-lg px-2 flex justify-center items-center h-[35px]'}>
                                         {word}
                                     </p>
                                 }
@@ -93,7 +96,7 @@ export default function SpeedTyping() {
                     </motion.div>
                 </div>
                 <div className="bg-neutral-200 dark:bg-slate-500 w-full md:w-[35rem] rounded-b-lg p-2 border border-neutral-400">
-                    <input onKeyDown={(e) => submitWord(e)} ref={inputRef} value={userInput.input} onChange={(e) => handleInputChange(e)} type="text" className="bg-neutral-200 dark:bg-slate-500 dark:text-neutral-200 w-full focus:outline-none" placeholder="Type here" onBlur={(e) => e.target.focus()} />
+                    <input ref={inputRef} value={userInput.input} onChange={(e) => handleInputChange(e)} type="text" className="bg-neutral-200 dark:bg-slate-500 dark:text-neutral-200 w-full focus:outline-none" placeholder="Type here" onBlur={(e) => e.target.focus()} />
                 </div>
                 <p className="mt-2 text-neutral-300 dark:text-slate-500">Click SPACE to submit a word!</p>
             </div>

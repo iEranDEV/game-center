@@ -55,20 +55,20 @@ export default function EndGameModal({ words, userInput }: EndGameModal) {
                 <div className="px-5 w-full flex flex-col gap-2">
                     {/* Words per minute */}
                     <div className="w-full flex justify-between items-center">
-                        <b>WPM</b>
-                        <span className="text-neutral-500">{getWPM()}/min</span>
+                        <b className="dark:text-neutral-200">WPM</b>
+                        <span className="text-neutral-500 dark:text-slate-300">{getWPM()}/min</span>
                     </div>
 
                     {/* Characters per minute */}
                     <div className="w-full flex justify-between items-center">
-                        <b>CPM</b>
-                        <span className="text-neutral-500">{getCPM()}/min</span>
+                        <b className="dark:text-neutral-200">CPM</b>
+                        <span className="text-neutral-500 dark:text-slate-300">{getCPM()}/min</span>
                     </div>
 
                     {/* Accuracy */}
                     <div className="w-full flex justify-between items-center">
-                        <b>Accuracy %</b>
-                        <span className="text-neutral-500">{getAccuracy()}%</span>
+                        <b className="dark:text-neutral-200">Accuracy %</b>
+                        <span className="text-neutral-500 dark:text-slate-300">{getAccuracy()}%</span>
                     </div>
                 </div>
 

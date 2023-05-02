@@ -12,13 +12,13 @@
         "description": "test desc for visual memory",
         "color": "#3b82f6",
         "secondaryColor": "#0ea5e9",
-        "status": "New"
+        "status": ""
     }, {
         "id": "speedTyping",
         "title": "Speed typing",
         "description": "test desc for speed typing",
         "color": "#f8cd0e",
         "secondaryColor": "#ffe15e",
-        "status": "Coming soon"
+        "status": ""
     }
 ]
