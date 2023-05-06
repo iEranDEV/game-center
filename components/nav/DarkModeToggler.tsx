@@ -20,7 +20,7 @@ export default function DarkModeToggler() {
             <BiSun></BiSun>
 
             {/* Toggler */}
-            <div onClick={() => toggleDarkMode()} className="relative w-12 h-6 px-0.5 cursor-pointer rounded-full bg-neutral-300 dark:bg-slate-500">
+            <div onClick={() => toggleDarkMode()} className="relative w-12 h-6 px-0.5 cursor-pointer rounded-full bg-neutral-300 dark:bg-zinc-500">
                 <motion.div ref={scope}
                     initial={{y: 2}}
                     className="absolute h-5 w-5 bg-neutral-400 dark:bg-slate-300 rounded-full">

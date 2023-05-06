@@ -1,6 +1,5 @@
 import GameCard from '@/components/general/GameCard'
 import games from '@/games.json'
-import { motion } from 'framer-motion'
 
 export default function Home() {
 	return (
@@ -9,18 +8,10 @@ export default function Home() {
 			{/* Hero section */}
 
 			{/* Games section */}
-			<div className="w-full md:w-2/3 grid grid-cols-2 md:grid-cols-3 mt-6 max-w-3xl gap-3">
+			<div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 mt-6 max-w-3xl gap-5">
 				{games.map((game) => (
 					<GameCard key={game.id} game={game} />
 				))}
-
-				{/* Blank space */}
-				<motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 bg-neutral-100 dark:bg-slate-600/50 border-neutral-200 dark:border-slate-800 rounded-lg'>
-				</motion.div>
-				<motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 bg-neutral-100 dark:bg-slate-600/50 border-neutral-200 dark:border-slate-800 rounded-lg'>
-				</motion.div>
-				<motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 bg-neutral-100 dark:bg-slate-600/50 border-neutral-200 dark:border-slate-800 rounded-lg'>
-				</motion.div>
 			</div>
 
 			<div className='flex justify-center items-center pt-16'>

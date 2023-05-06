@@ -44,7 +44,7 @@ function WordleBoardTile({ row, col }: WordleBoardTileProps) {
                         opacity: 1, 
                     }}
             transition={{delay: row * 0.1 + col * 0.1, type: 'tween'}}
-        className={'h-14 w-14 border-neutral-300 dark:border-slate-500 rounded-lg flex justify-center items-center text-2xl uppercase text-neutral-600 dark:text-neutral-200 font-bold'}>
+        className={'h-14 w-14 border-neutral-300 dark:border-zinc-500 rounded-lg flex justify-center items-center text-2xl uppercase text-neutral-600 dark:text-neutral-200 font-bold'}>
             {currentRow === row && <span>
                 {wordleContext.userInput[col]}
             </span>}

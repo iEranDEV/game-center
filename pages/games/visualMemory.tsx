@@ -57,7 +57,7 @@ export default function VisualMemory() {
         <div className='w-full h-full justify-center flex flex-col items-center pt-10 gap-2'>
 
             {status === 'nextStage' && <motion.div key={Math.random()} 
-                className="fixed h-screen w-screen flex justify-center items-center top-0 left-0"
+                className="fixed h-screen w-screen flex justify-center items-center top-0 left-0 z-50"
                 initial={{backgroundColor: "transparent"}}
                 animate={{backgroundColor: ['rgba(16,185,129,0)', 'rgba(110,231,183,0.2)', 'rgba(16,185,129,0)']}}
                 transition={{repeat: 1, duration: 0.5}}

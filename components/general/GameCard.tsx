@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
-import Image from 'next/image'
 import Button from "./Button";
 
 export default function GameCard({ game }: { game: GameType}) {
 
 
     return (
-        <motion.div  whileHover={{y: -2}} className='w-full h-72 overflow-hidden border border-b-4 dark:bg-slate-700 border-neutral-200 dark:border-slate-800 rounded-lg'>
-            <div className='w-full h-32 border-b-4 flex justify-center items-center' style={{backgroundColor: game.secondaryColor, borderColor: game.color}}>
-                <Image src={'/game_icons/' + game.id + '.svg'} alt={game.title} height={60} width={60} />
+        <motion.div whileHover={{y: -2}} className='w-full overflow-hidden p-4 pl-20 relative border shadow-comic dark:shadow-comic-dark bg-primary border-neutral-200 dark:border-zinc-900 rounded-lg'>
+            <div className="absolute h-full w-20 left-0 -translate-x-1/3 top-1/2 -translate-y-1/2" style={{backgroundColor: game.secondaryColor}}>
+
             </div>
 
-            <div className="w-full flex flex-col justify-between h-36 items-center p-2">
-                <h1 className="text-2xl text-primary">{game.title}</h1>
-                <span className="text-secondary text-center">{game.description}</span>
-                <Button link={'/games/' + game.id} text={'play'}></Button>
+            <div className="flex w-full flex-col h-full justify-between gap-2">
+                <h1 className="text-3xl text-primary" style={{color: game.color}}>{game.title}</h1>
+                <span className="text-secondary text-left">{game.description}</span>
+                <div className="flex justify-end">
+                    <Button link={'/games/' + game.id} text={'play'}></Button>
+                </div>
             </div>
         </motion.div>
     )

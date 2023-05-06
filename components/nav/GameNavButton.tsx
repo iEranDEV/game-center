@@ -17,7 +17,8 @@ function GameNavButton({ game, link }: { game: GameType, link: string }) {
         <Link href={link}>
             <motion.div whileHover="hover" style={{borderColor: game.color}} className='px-2 hover:border-l-[6px] border-neutral-50 dark:border-slate-700 py-1.5 hover:bg-neutral-100 dark:hover:bg-slate-600 cursor-pointer flex justify-between items-center'>
                 <div className="flex items-center gap-2">
-                    <Image src={'/game_icons/' + game.id + '.svg'} width={20} height={20} alt={game.title}></Image>
+                    <div className="h-5 w-5 rounded-full" style={{backgroundColor: game.secondaryColor}}>
+                    </div>
                     <motion.p variants={textMotion}>
                         {game.title}
                     </motion.p>

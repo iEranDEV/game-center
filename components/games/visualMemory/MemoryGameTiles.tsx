@@ -52,7 +52,7 @@ export default function MemoryGameTile({ pos, board, status, setStatus, userInpu
         <motion.div id={"tile_" + pos.row + "_" + pos.col} 
             onClick={() => !selected && select()} 
             ref={scope} 
-            className="w-full cursor-pointer bg-neutral-200 dark:bg-slate-500 aspect-square rounded-lg"
+            className="w-full cursor-pointer bg-neutral-200 dark:bg-zinc-500 aspect-square rounded-lg"
         ></motion.div>
     )
 }

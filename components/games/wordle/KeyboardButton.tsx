@@ -40,13 +40,13 @@ function KeyboardButton({ letter, icon }: KeyboardButtonProps) {
     const getBgColor = () => {
         switch(value) {
             case 'none':
-                return 'bg-neutral-200 dark:bg-slate-500 text-neutral-500 dark:text-neutral-200';
+                return 'bg-neutral-200 dark:bg-zinc-600 text-neutral-500 dark:text-neutral-200';
             case 'includes':
                 return 'bg-orange-300 text-neutral-50';
             case 'onIndex':
                 return 'bg-emerald-400 text-neutral-50';
             case 'noIncludes':
-                return 'bg-neutral-400 text-neutral-50 ';
+                return 'bg-neutral-400 dark:bg-zinc-400 text-neutral-50 ';
         }
     }
 
